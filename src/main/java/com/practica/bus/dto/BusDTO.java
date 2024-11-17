@@ -1,42 +1,27 @@
-package com.practica.bus.model;
+package com.practica.bus.dto;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "bus")
-public class Bus {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bus_id")
+public class BusDTO {
     private Long id;
-
-    @Column(name = "numero_bus", nullable = false)
     private String numeroBus;
-
-    @Column(nullable = false)
     private String placa;
-
-    @Column(name = "fecha_creacion", nullable = false, updatable = false)
-    
     private LocalDateTime fechaCreacion;
-
     private String caracteristicas;
-
-    @Column(nullable = false)
     private Boolean activo;
+    private MarcaDTO marca;
 
-    @ManyToOne(fetch = FetchType.LAZY) 
-    @JoinColumn(name = "marca_id", nullable = false)  // Aquí referenciamos marca_id correctamente
-    private Marca marcaId; // El nombre de la propiedad corresponde a marcaId
-
-    @PrePersist
-    public void prePersist() {
-        this.fechaCreacion = LocalDateTime.now();  // Establece la fecha y hora actual antes de persistir
+    // Constructor, Getters y Setters
+    public BusDTO(Long id, String numeroBus, String placa, LocalDateTime fechaCreacion, String caracteristicas, Boolean activo, MarcaDTO marca) {
+        this.id = id;
+        this.numeroBus = numeroBus;
+        this.placa = placa;
+        this.fechaCreacion = fechaCreacion;
+        this.caracteristicas = caracteristicas;
+        this.activo = activo;
+        this.marca = marca;
     }
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -85,13 +70,11 @@ public class Bus {
         this.activo = activo;
     }
 
-    public Marca getMarca() {  // Usamos getMarca() para acceder a la marca relacionada
-        return marcaId;
+    public MarcaDTO getMarca() {
+        return marca;
     }
 
-    public void setMarca(Marca marca) {  // Usamos setMarca() para asignar una marca
-        this.marcaId = marca;
+    public void setMarca(MarcaDTO marca) {
+        this.marca = marca;
     }
-    
-    
 }
