@@ -13,7 +13,7 @@ import com.practica.bus.model.Bus;
 public class BusMapper {
 	
 	public BusDTO toBusDTO(Bus bus) {
-        // Aquí cambiamos de getMarcaId() a getMarca() para acceder al objeto Marca completo
+        
         MarcaDTO marcaDTO = new MarcaDTO(bus.getMarca().getMarcaId(), bus.getMarca().getNombre());
         return new BusDTO(
             bus.getId(),

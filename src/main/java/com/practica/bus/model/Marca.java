@@ -15,18 +15,18 @@ public class Marca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "marca_id")  // Nombre correcto de la columna
+    @Column(name = "marca_id")  
     private Long marcaId;
 
     @Column(name = "nombre")
     private String nombre;
 
-    // Getters y Setters
-    public Long getMarcaId() {  // Método getter corregido
+    
+    public Long getMarcaId() {  
         return marcaId;
     }
 
-    public void setMarcaId(Long marcaId) {  // Método setter corregido
+    public void setMarcaId(Long marcaId) {  
         this.marcaId = marcaId;
     }
 

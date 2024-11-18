@@ -28,12 +28,12 @@ public class Bus {
     private Boolean activo;
 
     @ManyToOne(fetch = FetchType.LAZY) 
-    @JoinColumn(name = "marca_id", nullable = false)  // Aquí referenciamos marca_id correctamente
-    private Marca marcaId; // El nombre de la propiedad corresponde a marcaId
+    @JoinColumn(name = "marca_id", nullable = false)  
+    private Marca marcaId; 
 
     @PrePersist
     public void prePersist() {
-        this.fechaCreacion = LocalDateTime.now();  // Establece la fecha y hora actual antes de persistir
+        this.fechaCreacion = LocalDateTime.now();  
     }
 
     // Getters y Setters
@@ -85,11 +85,11 @@ public class Bus {
         this.activo = activo;
     }
 
-    public Marca getMarca() {  // Usamos getMarca() para acceder a la marca relacionada
+    public Marca getMarca() {  
         return marcaId;
     }
 
-    public void setMarca(Marca marca) {  // Usamos setMarca() para asignar una marca
+    public void setMarca(Marca marca) {  
         this.marcaId = marca;
     }
     

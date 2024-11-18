@@ -11,7 +11,7 @@ public class BusDTO {
     private Boolean activo;
     private MarcaDTO marca;
 
-    // Constructor, Getters y Setters
+    
     public BusDTO(Long id, String numeroBus, String placa, LocalDateTime fechaCreacion, String caracteristicas, Boolean activo, MarcaDTO marca) {
         this.id = id;
         this.numeroBus = numeroBus;

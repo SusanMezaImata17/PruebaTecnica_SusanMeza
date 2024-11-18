@@ -13,27 +13,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/bus")
 public class BusController {
 
     @Autowired
     private BusService busService;
 
-    // Obtener un bus por ID
+   
     @GetMapping("/{id}")
     public ResponseEntity<BusDTO> getBus(@PathVariable Long id) {
-        // Usamos el servicio para obtener el bus y mapearlo a BusDTO
+       
         Bus bus = busService.getBus(id);
         return ResponseEntity.ok(busService.toBusDTO(bus));
     }
     
-    // Obtener todos los buses con paginación
+    
     @GetMapping
     public ResponseEntity<Page<BusDTO>> getAllBuses(
-            @RequestParam(defaultValue = "0") int page,  // Página inicial
-            @RequestParam(defaultValue = "10") int size // Tamaño de página
+            @RequestParam(defaultValue = "0") int page,  
+            @RequestParam(defaultValue = "10") int size 
     ) {
-        Pageable pageable = PageRequest.of(page, size); // Construcción del objeto Pageable
+        Pageable pageable = PageRequest.of(page, size); 
         Page<BusDTO> buses = busService.getAllBuses(pageable);
         return ResponseEntity.ok(buses);
     }

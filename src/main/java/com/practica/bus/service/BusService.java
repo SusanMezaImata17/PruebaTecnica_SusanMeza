@@ -9,17 +9,16 @@ import com.practica.bus.dto.BusDTO;
 import com.practica.bus.model.Bus;
 import com.practica.bus.repository.BusRepository;
 
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class BusService {
 
     @Autowired
-    private BusRepository busRepository;  // Repositorio de Bus
+    private BusRepository busRepository;  
 
     @Autowired
-    private BusMapper busMapper;  // Mapper para convertir de Bus a BusDTO
+    private BusMapper busMapper; 
 
     public Bus getBus(Long id) {
         return busRepository.findById(id)
@@ -30,14 +29,13 @@ public class BusService {
         return busMapper.toBusDTO(bus);
     }
     
-    
- // **Nuevo método**: Obtener todos los buses registrados
- // Método con paginación
+
+
     public Page<BusDTO> getAllBuses(Pageable pageable) {
-        // Recuperar una página de buses de la base de datos
+    
         Page<Bus> busPage = busRepository.findAll(pageable);
 
-        // Convertir la página de Bus a una página de BusDTO
+       
         return busPage.map(busMapper::toBusDTO);
     }
 }

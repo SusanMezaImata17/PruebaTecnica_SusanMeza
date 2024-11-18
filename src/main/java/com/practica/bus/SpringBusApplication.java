@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = "com.practica.bus")  // Escanear este paquete y subpaquetes
+@SpringBootApplication(scanBasePackages = "com.practica.bus")  
 public class SpringBusApplication {
 
     public static void main(String[] args) {
